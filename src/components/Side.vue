@@ -42,7 +42,7 @@
               </v-row>
             </v-card>
             <v-row>
-              <v-col>Lorem ipsum dolor sit amet, consectetucitur orci, tpat sodales augue, sit amet commodo quam gravida nec. Integer bibendum tincidunt lacus, id molestie nulla suscipit ullamcorper. Vivamus accumsan, nisi eu sagittis interdum, elit eros cursus lorem, nec semper massa ante vel nunc. Donec rutrum diam orci, in dignissim nulla aliquam feugiat.</v-col>
+              <v-col>Hier Erklärung einfügen für die Beschreibung einer relevanten KPI, welche eine Bewertung des Prozesses ermöglicht</v-col>
               <v-col>
                 <v-card class="mt-3" max-height="300">
                   <v-card-text>
@@ -195,7 +195,7 @@ export default {
         category: 2
       }
     ],
-    value: [423, 446, 675, 510, 590, 610, 760],
+    value: [423, 446, 675, 510, 590, 610, 760,423, 446, 675, 510, 590, 610, 760],
     checking: false,
     heartbeats: []
   }),
@@ -204,10 +204,17 @@ export default {
       this.dialog = !this.dialog;
     },
     timer() {
-      this.counter = this.counter + 1;
-      if (this.counter === 3) {
-        this.counter = 0;
+     
+      this.value.push(Math.floor(Math.random()*100 +400))
+      this.value.splice(0,1)
+      if(this.value[this.value.length-1]>480){
+        this.counter = 2
+      }else if(this.value[this.value.length-1]>450){
+        this.counter = 1
+      }else{
+        this.counter = 0
       }
+
     }
   },
 

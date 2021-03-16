@@ -1,7 +1,7 @@
 <template>
   <v-card class="mt-3">
     <v-row>
-      <v-col>
+      <v-col class="mr-12">
         <v-img
           class="shrink"
           contain
@@ -11,32 +11,129 @@
         />
       </v-col>
     </v-row>
-    <v-row justify="center" align="center">
-      <v-col>
-        <v-card class="mt-3" flat>
-          <v-card-text>
-            <v-sheet max-width="500px">
-              <v-sparkline
-                :value="value"
-                color="secondary"
-                padding="10"
-                stroke-linecap="round"
-                smooth
-                line-width="2"
-              >
-                <template v-slot:label="item">{{ item.value }}</template>
-              </v-sparkline>
-            </v-sheet>
-          </v-card-text>
-        </v-card>
+    <v-row>
+      <v-col class="ml-12">
+      Hier Erklärung einfügen für die Schneiden ampel
       </v-col>
-      <v-col>Lorem ipsum dolor sit Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiat. Maecenas eget ultrices</v-col>
+       <v-col  align="end">
+        <div v-if="counter===1" >
+          <span class="css-ampel ampelrot">
+            <span></span>
+          </span>
+        </div>
+        <div v-else-if="counter===2">
+          <span class="css-ampel ampelgelb">
+            <span></span>
+          </span>
+        </div>
+        <div v-else>
+          <span class="css-ampel ampelgruen">
+            <span></span>
+          </span>
+        </div>
+      </v-col>
+        <v-col>
+        <div v-if="counter===1">
+          <span class="css-ampel ampelrot">
+            <span></span>
+          </span>
+        </div>
+        <div v-else-if="counter===2">
+          <span class="css-ampel ampelgelb">
+            <span></span>
+          </span>
+        </div>
+        <div v-else>
+          <span class="css-ampel ampelgruen">
+            <span></span>
+          </span>
+        </div>
+      </v-col>
+       <v-col class="mr-12">
+      Hier Erklärung einfügen für die Abstreifen Ampel
+      </v-col>
     </v-row>
+
   </v-card>
 </template>
 
 <script>
 export default {
-  data: () => ({ value: [760, 423, 590, 446, 675, 510, 590, 610] })
+  data: () => ({ value: [760, 423, 590, 446, 675, 510, 590, 610], counter:0 }),
+  methods:{
+    timer() {
+      if(Math.random()<0.2){
+        this.counter = 0
+      }else{
+      this.counter = this.counter + 1;
+        if (this.counter === 3) {
+          this.counter = 0;
+        }
+      }
+    
+      
+    }
+  },
+  mounted() {
+    this.interval = setInterval(this.timer, 3000);
+  }
 };
 </script>
+
+
+<style scoped>
+.css-ampel {
+  display: inline-block;
+  width: 30px;
+  height: 90px;
+  border-radius: 6px;
+  position: relative;
+  background-color: black;
+  zoom: 1.7;
+}
+
+.css-ampel span,
+.css-ampel:before,
+.css-ampel:after {
+  content: "";
+  color: white;
+  position: absolute;
+  border-radius: 15px;
+  width: 22px;
+  height: 22px;
+  left: 4px;
+}
+
+.css-ampel:before {
+  top: 6px;
+  background-color: red;
+  background-color: dimgrey;
+}
+
+.css-ampel:after {
+  top: 34px;
+  background-color: yellow;
+  background-color: dimgrey;
+}
+
+.css-ampel span {
+  top: 62px;
+  background-color: green;
+  background-color: dimgrey;
+}
+
+.ampelrot:before {
+  background-color: red;
+  box-shadow: 0 0 20px red;
+}
+
+.ampelgelb:after {
+  background-color: yellow;
+  box-shadow: 0 0 20px yellow;
+}
+
+.ampelgruen span {
+  background-color: limegreen;
+  box-shadow: 0 0 20px limegreen;
+}
+</style>

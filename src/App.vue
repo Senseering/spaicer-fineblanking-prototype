@@ -8,7 +8,7 @@
           contain
           src="@/assets/spaicer.png"
           transition="scale-transition"
-          width="100"
+          width="120" 
         />
       </div>
       <v-spacer></v-spacer>
@@ -39,6 +39,19 @@
         </v-row>
       </v-container>
     </v-main>
+    <v-footer>
+      <v-spacer />
+        <v-btn depressed small href="https://spaicer.de" target="_blank">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="@/assets/spaicer.png"
+          transition="scale-transition"
+          width="100"
+        />
+      </v-btn>
+    </v-footer>
   </v-app>
 </template>
 
