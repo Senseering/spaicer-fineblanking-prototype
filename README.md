@@ -1,5 +1,3 @@
-# demonstrator
-
 ## Project setup
 ```
 npm install
