@@ -12,7 +12,10 @@
         />
       </div>
       <v-spacer></v-spacer>
-      <div class="text-h5">Anomalie-Erkennung beim Feinschneiden zur Verschleißprognose</div>
+      <div
+        class="text-h5"
+        v-if="!$vuetify.breakpoint.mobile"
+      >Anomalie-Erkennung beim Feinschneiden zur Verschleißprognose</div>
       <v-spacer></v-spacer>
       <v-img
         alt="Vuetify Logo"
@@ -20,7 +23,7 @@
         contain
         src="@/assets/bmwi.png"
         transition="scale-transition"
-        width="120"
+        max-width="120"
       />
     </v-app-bar>
     <v-main>

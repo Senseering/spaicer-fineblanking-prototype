@@ -170,7 +170,7 @@ export default {
     interval: null,
     items: [
       { title: "Status" },
-      { title: "Annomalien" },
+      { title: "Anomalien" },
       { title: "Handlungsempfehlungen" },
       { title: "Datenströme" }
     ],
