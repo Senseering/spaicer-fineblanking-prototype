@@ -12,27 +12,8 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="ml-12">
-      Hier Erklärung einfügen für die Schneiden ampel
-      </v-col>
-       <v-col  align="end">
-        <div v-if="counter===1" >
-          <span class="css-ampel ampelrot">
-            <span></span>
-          </span>
-        </div>
-        <div v-else-if="counter===2">
-          <span class="css-ampel ampelgelb">
-            <span></span>
-          </span>
-        </div>
-        <div v-else>
-          <span class="css-ampel ampelgruen">
-            <span></span>
-          </span>
-        </div>
-      </v-col>
-        <v-col>
+      <v-col class="ml-12">Hier Erklärung einfügen für die Schneiden ampel</v-col>
+      <v-col align="end">
         <div v-if="counter===1">
           <span class="css-ampel ampelrot">
             <span></span>
@@ -49,29 +30,41 @@
           </span>
         </div>
       </v-col>
-       <v-col class="mr-12">
-      Hier Erklärung einfügen für die Abstreifen Ampel
+      <v-col>
+        <div v-if="counter===1">
+          <span class="css-ampel ampelrot">
+            <span></span>
+          </span>
+        </div>
+        <div v-else-if="counter===2">
+          <span class="css-ampel ampelgelb">
+            <span></span>
+          </span>
+        </div>
+        <div v-else>
+          <span class="css-ampel ampelgruen">
+            <span></span>
+          </span>
+        </div>
       </v-col>
+      <v-col class="mr-12">Hier Erklärung einfügen für die Abstreifen Ampel</v-col>
     </v-row>
-
   </v-card>
 </template>
 
 <script>
 export default {
-  data: () => ({ value: [760, 423, 590, 446, 675, 510, 590, 610], counter:0 }),
-  methods:{
+  data: () => ({ value: [760, 423, 590, 446, 675, 510, 590, 610], counter: 0 }),
+  methods: {
     timer() {
-      if(Math.random()<0.2){
-        this.counter = 0
-      }else{
-      this.counter = this.counter + 1;
+      if (Math.random() < 0.2) {
+        this.counter = 0;
+      } else {
+        this.counter = this.counter + 1;
         if (this.counter === 3) {
           this.counter = 0;
         }
       }
-    
-      
     }
   },
   mounted() {

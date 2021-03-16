@@ -150,11 +150,8 @@
     <v-dialog v-model="dialog" width="500">
       <v-card>
         <v-card-title class="headline grey lighten-2">Weitere Informationen</v-card-title>
-
         <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</v-card-text>
-
         <v-divider></v-divider>
-
         <v-card-actions>
           <v-spacer></v-spacer>
           <v-btn color="primary" text @click="dialog = false">Alles klar</v-btn>
@@ -195,7 +192,22 @@ export default {
         category: 2
       }
     ],
-    value: [423, 446, 675, 510, 590, 610, 760,423, 446, 675, 510, 590, 610, 760],
+    value: [
+      423,
+      446,
+      675,
+      510,
+      590,
+      610,
+      760,
+      423,
+      446,
+      675,
+      510,
+      590,
+      610,
+      760
+    ],
     checking: false,
     heartbeats: []
   }),
@@ -204,17 +216,15 @@ export default {
       this.dialog = !this.dialog;
     },
     timer() {
-     
-      this.value.push(Math.floor(Math.random()*100 +400))
-      this.value.splice(0,1)
-      if(this.value[this.value.length-1]>480){
-        this.counter = 2
-      }else if(this.value[this.value.length-1]>450){
-        this.counter = 1
-      }else{
-        this.counter = 0
+      this.value.push(Math.floor(Math.random() * 100 + 400));
+      this.value.splice(0, 1);
+      if (this.value[this.value.length - 1] > 480) {
+        this.counter = 2;
+      } else if (this.value[this.value.length - 1] > 450) {
+        this.counter = 1;
+      } else {
+        this.counter = 0;
       }
-
     }
   },
 

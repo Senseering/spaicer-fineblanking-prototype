@@ -8,7 +8,7 @@
           contain
           src="@/assets/spaicer.png"
           transition="scale-transition"
-          width="120" 
+          width="120"
         />
       </div>
       <v-spacer></v-spacer>
@@ -28,12 +28,12 @@
         <v-row justify="center">
           <v-col>
             <v-spacer />
-            <Main />
+            <Left />
             <v-spacer />
           </v-col>
           <v-col>
             <v-spacer />
-            <Side />
+            <Right />
             <v-spacer />
           </v-col>
         </v-row>
@@ -41,7 +41,7 @@
     </v-main>
     <v-footer>
       <v-spacer />
-        <v-btn depressed small href="https://spaicer.de" target="_blank">
+      <v-btn depressed small href="https://spaicer.de" target="_blank">
         <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
@@ -56,15 +56,15 @@
 </template>
 
 <script>
-import Main from "./components/Main.vue";
-import Side from "./components/Side.vue";
+import Left from "./components/Left.vue";
+import Right from "./components/Right.vue";
 
 export default {
   name: "App",
 
   components: {
-    Main,
-    Side
+    Left,
+    Right
   },
 
   data: () => ({
