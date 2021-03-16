@@ -1,0 +1,65 @@
+<template>
+  <v-app>
+    <v-app-bar app color="transparent" class="elevation-1">
+      <div class="d-flex align-center">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="@/assets/spaicer.png"
+          transition="scale-transition"
+          width="100"
+        />
+      </div>
+      <v-spacer></v-spacer>
+      <div class="text-h5">Anomalie-Erkennung beim Feinschneiden zur Verschleißprognose</div>
+      <v-spacer></v-spacer>
+      <v-img
+        alt="Vuetify Logo"
+        class="shrink ma-2"
+        contain
+        src="@/assets/bmwi.png"
+        transition="scale-transition"
+        width="120"
+      />
+    </v-app-bar>
+    <v-main>
+      <v-container ill-height fluid>
+        <v-row justify="center">
+          <v-col>
+            <v-spacer />
+            <Main />
+            <v-spacer />
+          </v-col>
+          <v-col>
+            <v-spacer />
+            <Side />
+            <v-spacer />
+          </v-col>
+        </v-row>
+      </v-container>
+    </v-main>
+  </v-app>
+</template>
+
+<script>
+import Main from "./components/Main.vue";
+import Side from "./components/Side.vue";
+
+export default {
+  name: "App",
+
+  components: {
+    Main,
+    Side
+  },
+
+  data: () => ({
+    items: [
+      { title: "Home", icon: "mdi-home-city" },
+      { title: "My Account", icon: "mdi-account" },
+      { title: "Users", icon: "mdi-account-group-outline" }
+    ]
+  })
+};
+</script>
