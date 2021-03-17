@@ -40,6 +40,17 @@
     </v-main>
     <v-footer>
       <v-spacer />
+
+      <v-btn text small href="https://www.feintool.com/en/" target="_blank">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink"
+          contain
+          src="@/assets/logo_feintool.png"
+          transition="scale-transition"
+          width="70"
+        />
+      </v-btn>
       <v-btn text small href="https://dfki.de" target="_blank">
         <v-img
           alt="Vuetify Logo"
