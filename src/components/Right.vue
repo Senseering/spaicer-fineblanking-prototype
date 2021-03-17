@@ -10,12 +10,12 @@
             <v-card flat>
               <v-row justify="center">
                 <v-col class="pa-3">
-                  <div v-if="counter===0">
+                  <div v-if="lightStatus === 'red'">
                     <span class="css-ampel ampelrot">
                       <span></span>
                     </span>
                   </div>
-                  <div v-else-if="counter===1">
+                  <div v-else-if="lightStatus === 'yellow'">
                     <span class="css-ampel ampelgelb">
                       <span></span>
                     </span>
@@ -44,20 +44,8 @@
             <v-row>
               <v-col>Hier Erklärung einfügen für die Beschreibung einer relevanten KPI, welche eine Bewertung des Prozesses ermöglicht</v-col>
               <v-col>
-                <v-card class="mt-3" max-height="300">
-                  <v-card-text>
-                    <v-sheet>
-                      <v-sparkline
-                        :value="value"
-                        color="secondary"
-                        padding="24"
-                        stroke-linecap="round"
-                        smooth
-                      >
-                        <template v-slot:label="item">{{ item.value }}</template>
-                      </v-sparkline>
-                    </v-sheet>
-                  </v-card-text>
+                <v-card flat height="300">
+                  <LineDataStatus @red="red" @yellow="yellow" @green="green" />
                 </v-card>
               </v-col>
             </v-row>
@@ -73,7 +61,7 @@
                   </tr>
                 </thead>
                 <tbody>
-                  <tr v-for="item in desserts" :key="item.name">
+                  <tr v-for="item in anomalieList" :key="item.name">
                     <td>{{ item.name }}</td>
                     <td v-if="item.category=== 1">
                       <v-icon color="yellow">warning</v-icon>
@@ -82,7 +70,7 @@
                       <v-icon color="error">error</v-icon>
                     </td>
                     <td>
-                      <v-btn text small @click="showAlert" color="primary">
+                      <v-btn text small @click="showAlert(item)" color="primary">
                         <v-icon>help</v-icon>
                       </v-btn>
                     </td>
@@ -125,20 +113,7 @@
             <v-row>
               <v-col>
                 <v-card class max-width="600" height="100%">
-                  <v-card-text>
-                    <v-sheet>
-                      <v-sparkline
-                        :value="value"
-                        color="secondary"
-                        height="200"
-                        padding="24"
-                        stroke-linecap="round"
-                        smooth
-                      >
-                        <template v-slot:label="item">{{ item.value }}</template>
-                      </v-sparkline>
-                    </v-sheet>
-                  </v-card-text>
+                  <DataStreams />
                 </v-card>
               </v-col>
               <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiat. Maecenas eget ultrices ante, tempor euismod nisi. Integer placerat efficitur orci, ac malesuada libero eleifend ut. Suspendisse volutpat sodales augue, sit amet commodo quam gravida nec. Integer bibendum tincidunt lacus, id molestie nulla suscipit ullamcorper. Vivamus accumsan, nisi eu sagittis interdum, elit eros cursus lorem, nec semper massa ante vel nunc. Donec rutrum diam orci, in dignissim nulla aliquam feugiat.</v-col>
@@ -147,10 +122,14 @@
         </v-expansion-panel-content>
       </v-expansion-panel>
     </v-expansion-panels>
-    <v-dialog v-model="dialog" width="500">
+    <v-dialog v-model="dialog" max-width="500">
       <v-card>
         <v-card-title class="headline grey lighten-2">Weitere Informationen</v-card-title>
-        <v-card-text>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.</v-card-text>
+        <v-card-text class="pa-3">
+          Informationen zu:
+          <strong>{{anomalyInfoTo? anomalyInfoTo.name:""}}</strong>
+          {{anomalyInfoTo? anomalyInfoTo.description:""}}
+        </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
@@ -162,11 +141,20 @@
 </template>
 
 <script>
+import DataStreams from "./Chart/DataStreams.vue";
+import LineDataStatus from "./Chart/LineDataStatus.vue";
+
 export default {
+  components: {
+    LineDataStatus,
+    DataStreams
+  },
   data: () => ({
     dialog: false,
     panel: 0,
     counter: 1,
+    anomalyInfoTo: null,
+    lightStatus: "green",
     interval: null,
     items: [
       { title: "Status" },
@@ -174,22 +162,26 @@ export default {
       { title: "Handlungsempfehlungen" },
       { title: "Datenströme" }
     ],
-    desserts: [
+    anomalieList: [
       {
         name: "Auswerfer Widerstand erhöht",
-        category: 1
+        category: 1,
+        description: "Hier könnte ihre beschreibung stehen 1"
       },
       {
         name: "Werkzeug laut",
-        category: 1
+        category: 1,
+        description: "Hier könnte ihre beschreibung stehen 2"
       },
       {
         name: "Motor X dreht zu schnell ",
-        category: 2
+        category: 2,
+        description: "Hier könnte ihre beschreibung stehen 3"
       },
       {
         name: "Motor Y brennt",
-        category: 2
+        category: 2,
+        description: "Hier könnte ihre beschreibung stehen 4"
       }
     ],
     value: [
@@ -212,25 +204,25 @@ export default {
     heartbeats: []
   }),
   methods: {
-    showAlert() {
-      this.dialog = !this.dialog;
+    red(val) {
+      console.log("RED:", val);
+      this.lightStatus = "red";
     },
-    timer() {
-      this.value.push(Math.floor(Math.random() * 100 + 400));
-      this.value.splice(0, 1);
-      if (this.value[this.value.length - 1] > 480) {
-        this.counter = 2;
-      } else if (this.value[this.value.length - 1] > 450) {
-        this.counter = 1;
-      } else {
-        this.counter = 0;
-      }
+    yellow(val) {
+      console.log("YELLOW:", val);
+      this.lightStatus = "yellow";
+    },
+    green(val) {
+      console.log("GREEN:", val);
+      this.lightStatus = "green";
+    },
+    showAlert(row) {
+      this.dialog = !this.dialog;
+      this.anomalyInfoTo = row;
     }
   },
 
-  mounted() {
-    this.interval = setInterval(this.timer, 1000);
-  }
+  mounted() {}
 };
 </script>
 <style scoped>
