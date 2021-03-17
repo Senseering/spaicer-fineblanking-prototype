@@ -1,14 +1,16 @@
 <template>
   <v-app>
     <v-app-bar app color="transparent" class="elevation-1">
-      <v-img
-        alt="Vuetify Logo"
-        class="shrink mr-2"
-        contain
-        src="@/assets/spaicer.png"
-        transition="scale-transition"
-        width="120"
-      />
+      <v-btn class="mx-0" text href="https://spaicer.de" target="_blank">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink mr-2"
+          contain
+          src="@/assets/spaicer.png"
+          transition="scale-transition"
+          width="120"
+        />
+      </v-btn>
       <v-spacer></v-spacer>
       <div
         class="text-h5"
@@ -38,12 +40,22 @@
     </v-main>
     <v-footer>
       <v-spacer />
-      <v-btn depressed small href="https://spaicer.de" target="_blank">
+      <v-btn text small href="https://dfki.de" target="_blank">
         <v-img
           alt="Vuetify Logo"
-          class="shrink mr-2"
+          class="shrink"
           contain
-          src="@/assets/spaicer.png"
+          src="@/assets/logo_dfki.png"
+          transition="scale-transition"
+          width="70"
+        />
+      </v-btn>
+      <v-btn text small href="https://senseering.de" target="_blank">
+        <v-img
+          alt="Vuetify Logo"
+          class="shrink"
+          contain
+          src="@/assets/se_logo.png"
           transition="scale-transition"
           width="100"
         />

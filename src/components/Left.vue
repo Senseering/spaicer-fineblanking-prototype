@@ -60,6 +60,7 @@ export default {
   }),
   methods: {
     timer() {
+      //this needs to be updated with real data
       let lightStatusSchneidenRandom = Math.random();
       if (lightStatusSchneidenRandom > 0.9) {
         this.lightStatusSchneiden = "rot";
@@ -77,8 +78,6 @@ export default {
       } else {
         this.lightStatusAbstreifen = "green";
       }
-
-      console.log("lailaLog", this.lightStatusSchneiden);
     }
   },
   mounted() {
