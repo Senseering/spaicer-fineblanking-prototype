@@ -12,14 +12,14 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="ml-12">Hier Erklärung einfügen für die schneiden ampel</v-col>
+      <v-col class="ml-12">Hier Erklärung einfügen für die Ampel (Schneiden)</v-col>
       <v-col align="end">
-        <div v-if="counter===1">
+        <div v-if="lightStatusSchneiden==='red'">
           <span class="css-ampel ampelrot">
             <span></span>
           </span>
         </div>
-        <div v-else-if="counter===2">
+        <div v-else-if="lightStatusSchneiden==='yellow'">
           <span class="css-ampel ampelgelb">
             <span></span>
           </span>
@@ -31,12 +31,12 @@
         </div>
       </v-col>
       <v-col>
-        <div v-if="counter===1">
+        <div v-if="lightStatusAbstreifen==='red'">
           <span class="css-ampel ampelrot">
             <span></span>
           </span>
         </div>
-        <div v-else-if="counter===2">
+        <div v-else-if="lightStatusAbstreifen==='yellow'">
           <span class="css-ampel ampelgelb">
             <span></span>
           </span>
@@ -47,24 +47,38 @@
           </span>
         </div>
       </v-col>
-      <v-col class="mr-12">Hier Erklärung einfügen für die abstreifen Ampel</v-col>
+      <v-col class="mr-12">Hier Erklärung einfügen für die Ampel (Abstreifen)</v-col>
     </v-row>
   </v-card>
 </template>
 
 <script>
 export default {
-  data: () => ({ value: [760, 423, 590, 446, 675, 510, 590, 610], counter: 0 }),
+  data: () => ({
+    lightStatusSchneiden: "green",
+    lightStatusAbstreifen: "green"
+  }),
   methods: {
     timer() {
-      if (Math.random() < 0.2) {
-        this.counter = 0;
+      let lightStatusSchneidenRandom = Math.random();
+      if (lightStatusSchneidenRandom > 0.9) {
+        this.lightStatusSchneiden = "rot";
+      } else if (lightStatusSchneidenRandom > 0.75) {
+        this.lightStatusSchneiden = "yellow";
       } else {
-        this.counter = this.counter + 1;
-        if (this.counter === 3) {
-          this.counter = 0;
-        }
+        this.lightStatusSchneiden = "green";
       }
+
+      let lightStatusAbstreifenRandom = Math.random();
+      if (lightStatusAbstreifenRandom > 0.9) {
+        this.lightStatusAbstreifen = "rot";
+      } else if (lightStatusAbstreifenRandom > 0.75) {
+        this.lightStatusAbstreifen = "yellow";
+      } else {
+        this.lightStatusAbstreifen = "green";
+      }
+
+      console.log("lailaLog", this.lightStatusSchneiden);
     }
   },
   mounted() {
