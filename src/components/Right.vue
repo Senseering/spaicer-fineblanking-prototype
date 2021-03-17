@@ -92,7 +92,7 @@
                     width="120"
                   />
                 </v-col>
-                <v-col>Lorem tes ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiatuada libero eleifend ut. Suspendisse vol</v-col>
+                <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiatuada libero eleifend ut. Suspendisse vol</v-col>
               </v-row>
               <v-row>
                 <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiatuada libero eleifend ut. Suspendisse vol</v-col>
