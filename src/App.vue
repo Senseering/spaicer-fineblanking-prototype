@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="transparent" class="elevation-1">
+    <v-app-bar app color="white" class="elevation-1">
       <v-btn class="mx-0" text href="https://spaicer.de" target="_blank">
         <v-img
           alt="Vuetify Logo"
