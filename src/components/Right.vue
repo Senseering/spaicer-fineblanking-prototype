@@ -1,5 +1,5 @@
 <template>
-  <v-card>
+  <v-card class="mx-1" max-width="900">
     <v-expansion-panels v-model="panel">
       <v-expansion-panel v-for="(item,i) in items" :key="i">
         <v-expansion-panel-header>

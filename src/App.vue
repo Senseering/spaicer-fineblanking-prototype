@@ -1,16 +1,14 @@
 <template>
   <v-app>
     <v-app-bar app color="transparent" class="elevation-1">
-      <div class="d-flex align-center">
-        <v-img
-          alt="Vuetify Logo"
-          class="shrink mr-2"
-          contain
-          src="@/assets/spaicer.png"
-          transition="scale-transition"
-          width="120"
-        />
-      </div>
+      <v-img
+        alt="Vuetify Logo"
+        class="shrink mr-2"
+        contain
+        src="@/assets/spaicer.png"
+        transition="scale-transition"
+        width="120"
+      />
       <v-spacer></v-spacer>
       <div
         class="text-h5"
@@ -27,17 +25,13 @@
       />
     </v-app-bar>
     <v-main>
-      <v-container ill-height fluid>
-        <v-row justify="center">
+      <v-container fluid justify="center">
+        <v-row no-gutters justify="center">
           <v-col>
-            <v-spacer />
-            <Left />
-            <v-spacer />
+            <Left class="mx-auto" />
           </v-col>
           <v-col>
-            <v-spacer />
-            <Right />
-            <v-spacer />
+            <Right class="mx-auto" />
           </v-col>
         </v-row>
       </v-container>

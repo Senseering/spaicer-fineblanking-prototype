@@ -1,5 +1,5 @@
 <template>
-  <v-card class="mt-3">
+  <v-card class="mx-1 mt-3" max-width="900">
     <v-row>
       <v-col class="mr-12">
         <v-img
@@ -12,7 +12,7 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="ml-12">Hier Erklärung einfügen für die Schneiden ampel</v-col>
+      <v-col class="ml-12">Hier Erklärung einfügen für die schneiden ampel</v-col>
       <v-col align="end">
         <div v-if="counter===1">
           <span class="css-ampel ampelrot">
@@ -47,7 +47,7 @@
           </span>
         </div>
       </v-col>
-      <v-col class="mr-12">Hier Erklärung einfügen für die Abstreifen Ampel</v-col>
+      <v-col class="mr-12">Hier Erklärung einfügen für die abstreifen Ampel</v-col>
     </v-row>
   </v-card>
 </template>
