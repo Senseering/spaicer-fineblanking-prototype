@@ -93,54 +93,33 @@
           </div>
           <div v-if="i===2">
             <v-container justify="center" align="center">
-              <v-row>
-                <v-col>
-                  <v-img
-                    alt="Vuetify Logo"
-                    class="shrink ma-2"
-                    contain
-                    src="@/assets/motor.png"
-                    transition="scale-transition"
-                    width="120"
-                  />
-                </v-col>
-                <v-col>
-                  <v-card flat>
-                    <v-card-title>Lokale Anomalie vorhergesagt in X:</v-card-title>
-                    <v-card-subtitle>Empfohlende Maßnahmen, basierend auf historischen Ereignissen:</v-card-subtitle>
-                    <v-card-text>
-                      <v-container>
-                        <v-row>Werkzeugwechsel: 99%</v-row>
-                        <v-row>Wartung Werkzeug: 75%</v-row>
-                        <v-row>Anhalten des aktuellen Prozesses: 70%</v-row>
+              <v-card outlined>
+                <v-card-title>Lokale Anomalie erkannt</v-card-title>
+                <v-card-subtitle>
+                  <strong>Wiederholende Anomalie wurde im Körperschall, während des Schneidprozesses erkannt.</strong>
+                  Dies könnte mit einer hohen Wahrscheinlichkeit zu einem kritischen Zustand des Werkzeugs führen.
+                  <strong>(89%)</strong>
+                </v-card-subtitle>
+                <v-card-text>
+                  <strong>Notwendige Handlung:</strong>
+                  <v-container>
+                    <v-row class="ml-3">Stop der Maschine und Werkzeugwechsel (Kosten: XX EUR)</v-row>
+                  </v-container>
+                  <strong>Mögliche zukünftige Handlungen:</strong>
+
+                  <v-container>
+                    <v-row class="ml-3">Wechsel zu Ersatzwerkzeug (Kosten: XX EUR)</v-row>
+                    <v-row class="ml-3">
+                      Wechsel zu einem alternativen Produkt
+                      <v-container class="ml-7">
+                        <v-row>Kosten Produkt B (Kosten: XX EUR)</v-row>
+                        <v-row>Kosten Produkt C (Kosten: XX EUR)</v-row>
+                        <v-row>Kosten Produkt D (Kosten: XX EUR)</v-row>
                       </v-container>
-                    </v-card-text>
-                  </v-card>
-                </v-col>
-              </v-row>
-              <v-row>
-                <v-card flat>
-                  <v-card-title>Lokale Anomalie vorhergesagt in Y:</v-card-title>
-                  <v-card-subtitle>Empfohlende Maßnahmen, basierend auf historischen Ereignissen:</v-card-subtitle>
-                  <v-card-text>
-                    <v-container>
-                      <v-row>Werkzeugwechsel: 99%</v-row>
-                      <v-row>Wartung Werkzeug: 75%</v-row>
-                      <v-row>Anhalten des aktuellen Prozesses: 70%</v-row>
-                    </v-container>
-                  </v-card-text>
-                </v-card>
-                <v-col>
-                  <v-img
-                    alt="Vuetify Logo"
-                    class="shrink ma-2"
-                    contain
-                    src="@/assets/werkzeug.png"
-                    transition="scale-transition"
-                    width="100"
-                  />
-                </v-col>
-              </v-row>
+                    </v-row>
+                  </v-container>
+                </v-card-text>
+              </v-card>
             </v-container>
           </div>
           <div v-if="i===3">
