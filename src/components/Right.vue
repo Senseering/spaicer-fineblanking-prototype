@@ -37,14 +37,26 @@
                     <strong>im Auswerfer</strong>
                     ab
                   </div>
-                  <div v-else>Alles gut</div>
+                  <div v-else>
+                    <strong>Keine Störung vorhanden oder prognostiziert</strong>
+                  </div>
                 </v-col>
               </v-row>
             </v-card>
             <v-row>
-              <v-col>Hier Erklärung einfügen für die Beschreibung einer relevanten KPI, welche eine Bewertung des Prozesses ermöglicht</v-col>
               <v-col>
-                <v-card flat height="300">
+                <v-row class="pt-7">
+                  Aktueller Lauf:
+                  <strong class="ml-3">OK</strong>
+                </v-row>
+                <v-row>
+                  Status Vorhersage
+                  <strong class="ml-3">OK</strong>
+                </v-row>
+                <v-row>Kein Handeln notwendig</v-row>
+              </v-col>
+              <v-col>
+                <v-card flat height="300" class="pb-3">
                   <LineDataStatus @red="red" @yellow="yellow" @green="green" />
                 </v-card>
               </v-col>
@@ -92,10 +104,32 @@
                     width="120"
                   />
                 </v-col>
-                <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiatuada libero eleifend ut. Suspendisse vol</v-col>
+                <v-col>
+                  <v-card flat>
+                    <v-card-title>Lokale Anomalie vorhergesagt in X:</v-card-title>
+                    <v-card-subtitle>Empfohlende Maßnahmen, basierend auf historischen Ereignissen:</v-card-subtitle>
+                    <v-card-text>
+                      <v-container>
+                        <v-row>Werkzeugwechsel: 99%</v-row>
+                        <v-row>Wartung Werkzeug: 75%</v-row>
+                        <v-row>Anhalten des aktuellen Prozesses: 70%</v-row>
+                      </v-container>
+                    </v-card-text>
+                  </v-card>
+                </v-col>
               </v-row>
               <v-row>
-                <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiatuada libero eleifend ut. Suspendisse vol</v-col>
+                <v-card flat>
+                  <v-card-title>Lokale Anomalie vorhergesagt in Y:</v-card-title>
+                  <v-card-subtitle>Empfohlende Maßnahmen, basierend auf historischen Ereignissen:</v-card-subtitle>
+                  <v-card-text>
+                    <v-container>
+                      <v-row>Werkzeugwechsel: 99%</v-row>
+                      <v-row>Wartung Werkzeug: 75%</v-row>
+                      <v-row>Anhalten des aktuellen Prozesses: 70%</v-row>
+                    </v-container>
+                  </v-card-text>
+                </v-card>
                 <v-col>
                   <v-img
                     alt="Vuetify Logo"
@@ -112,11 +146,25 @@
           <div v-if="i===3">
             <v-row>
               <v-col>
-                <v-card class max-width="600" height="100%">
-                  <DataStreams />
+                <v-card class="pb-7" max-width="600" height="500">
+                  <LineDataStatus />
                 </v-card>
               </v-col>
-              <v-col>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Duis quis commodo metus. In in fringilla nisi. Suspendisse potenti. Quisque lobortis purus ac nisi eleifend, sit amet commodo nisi imperdiet. Suspendisse vitae ultricies nisl, nec porttitor tortor. Pellentesque consectetur varius augue ut feugiat. Maecenas eget ultrices ante, tempor euismod nisi. Integer placerat efficitur orci, ac malesuada libero eleifend ut. Suspendisse volutpat sodales augue, sit amet commodo quam gravida nec. Integer bibendum tincidunt lacus, id molestie nulla suscipit ullamcorper. Vivamus accumsan, nisi eu sagittis interdum, elit eros cursus lorem, nec semper massa ante vel nunc. Donec rutrum diam orci, in dignissim nulla aliquam feugiat.</v-col>
+              <v-col>
+                <v-row>
+                  <strong>Produktionslinie:</strong>
+                  <br />Qualität der aktuellen Vorhersage, basierend auf aktiven Sensoren: 0.85
+                </v-row>
+
+                <v-row>
+                  Status Sensor (Schneiden):
+                  <strong class="ml-3">OK</strong>
+                </v-row>
+                <v-row>
+                  Status Sensor (Schneiden):
+                  <strong class="ml-3">OK</strong>
+                </v-row>
+              </v-col>
             </v-row>
           </div>
         </v-expansion-panel-content>
@@ -141,18 +189,18 @@
 </template>
 
 <script>
-import DataStreams from "./Chart/DataStreams.vue";
+//import DataStreams from "./Chart/DataStreams.vue";
 import LineDataStatus from "./Chart/LineDataStatus.vue";
 
 export default {
   components: {
-    LineDataStatus,
-    DataStreams
+    LineDataStatus
+    //DataStreams
   },
   data: () => ({
     dialog: false,
     panel: 0,
-    counter: 1,
+    counter: 2,
     anomalyInfoTo: null,
     lightStatus: "green",
     interval: null,
@@ -166,20 +214,21 @@ export default {
       {
         name: "Auswerfer Widerstand erhöht",
         category: 1,
-        description: "Hier könnte ihre beschreibung stehen 1"
+        description: "Es scheint als wäre der Widerstand im Auswerfer erhöht."
       },
       {
         name: "Werkzeug laut",
         category: 1,
-        description: "Hier könnte ihre beschreibung stehen 2"
+        description:
+          "Es wurde eine erhöhte Lautstärke beim Abstreifprozess im Werkzeug festgestellt. "
       },
       {
-        name: "Motor X dreht zu schnell ",
+        name: "Bandvorschub blockiert",
         category: 2,
-        description: "Hier könnte ihre beschreibung stehen 3"
+        description: ""
       },
       {
-        name: "Motor Y brennt",
+        name: "Motor brennt",
         category: 2,
         description: "Hier könnte ihre beschreibung stehen 4"
       }

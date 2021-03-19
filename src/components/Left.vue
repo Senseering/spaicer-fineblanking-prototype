@@ -12,7 +12,15 @@
       </v-col>
     </v-row>
     <v-row>
-      <v-col class="ml-12">Hier Erklärung einfügen für die Ampel (Schneiden)</v-col>
+      <v-col class="ml-12">
+        <div
+          v-if="lightStatusAbstreifen==='red'"
+        >Anomalie prognostiziert, Werkzeugwartung erforderlich.</div>
+        <div
+          v-else-if="lightStatusAbstreifen==='yellow'"
+        >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
+        <div v-else>Keine Handeln notwendig</div>
+      </v-col>
       <v-col align="end">
         <div v-if="lightStatusSchneiden==='red'">
           <span class="css-ampel ampelrot">
@@ -47,7 +55,15 @@
           </span>
         </div>
       </v-col>
-      <v-col class="mr-12">Hier Erklärung einfügen für die Ampel (Abstreifen)</v-col>
+      <v-col class="mr-12">
+        <div
+          v-if="lightStatusAbstreifen==='red'"
+        >Anomalie prognostiziert, Werkzeugwartung erforderlich.</div>
+        <div
+          v-else-if="lightStatusAbstreifen==='yellow'"
+        >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
+        <div v-else>Keine Handeln notwendig</div>
+      </v-col>
     </v-row>
   </v-card>
 </template>

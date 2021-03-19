@@ -1,6 +1,8 @@
 <template>
   <div style="position: relative; height:100%; width:100%">
+    <div class="ml-7">Anomaly index {{anomalyIndex}}</div>
     <canvas ref="canvas"></canvas>
+
     <v-overlay absolute v-if="loading">
       <v-progress-circular indeterminate size="32"></v-progress-circular>
     </v-overlay>
@@ -231,7 +233,26 @@ export default {
     }
   },
   watch: {},
-  computed: {},
+  computed: {
+    anomalyIndex() {
+      if (this.chart && this.chart.data.datasets[0]) {
+        return (
+          Math.round(
+            Math.abs(
+              this.chart.data.datasets[0].data[
+                this.chart.data.datasets[0].data.length - 1
+              ] -
+                this.chart.data.datasets[1].data[
+                  this.chart.data.datasets[0].data.length - 1
+                ]
+            ) * 100000
+          ) / 10000
+        );
+      } else {
+        return 0;
+      }
+    }
+  },
   beforeDestroy() {}
 };
 </script>
