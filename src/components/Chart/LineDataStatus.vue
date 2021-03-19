@@ -11,8 +11,19 @@
 <script>
 import Chart from "chart.js";
 
+const dt = 50;
+
 let data = require("./DataStatus.json");
-data.label[0] = Date.now();
+const absolutLengthOfData = data.value.length;
+const intervalLengthToDisplay = 300;
+const predictionLength = 50;
+let currentIndex = intervalLengthToDisplay;
+for (let i = 0; i < intervalLengthToDisplay; i++) {
+  data.label.push(Date.now() - (intervalLengthToDisplay - i) * dt);
+}
+for (let i = 0; i < predictionLength; i++) {
+  data.label.push(Date.now() + i * dt);
+}
 
 export default {
   name: "LineChart",
@@ -38,7 +49,7 @@ export default {
   async mounted() {
     this.init();
     await this.loadData();
-    this.timer = setInterval(this.updateChart, 500);
+    this.timer = setInterval(this.updateChart, dt);
   },
   methods: {
     init() {
@@ -117,44 +128,105 @@ export default {
 
       this.chart.data.datasets.push({
         label: data.labelDescription,
-        data: data.value, // Specify the data values array
+        data: data.value.map(el => el[0]).slice(0, intervalLengthToDisplay), // Specify the data values array
         fill: false,
         borderColor: this.$vuetify.theme.themes.light.primary, // Add custom color border (Line)
         borderWidth: 0, // Specify bar border width
         showLines: false
       });
+
+      let predictions = [];
+      for (let j = 0; j < intervalLengthToDisplay; j++) {
+        predictions.push(null);
+      }
+      for (let k = 0; k < predictionLength; k++) {
+        predictions.push(data.value[intervalLengthToDisplay + k][1]);
+      }
+
+      this.chart.data.datasets.push({
+        label: data.labelDescription,
+        data: predictions, //data.value.map(el => el[1]).slice(0, absolutLengthOfData), // Specify the data values array
+        fill: false,
+        borderColor: this.$vuetify.theme.themes.light.error, // Add custom color border (Line)
+        borderWidth: 0, // Specify bar border width
+        showLines: false
+      });
+
+      let upper = [];
+      for (let j = 0; j < intervalLengthToDisplay; j++) {
+        upper.push(null);
+      }
+      for (let k = 0; k < predictionLength; k++) {
+        upper.push(data.value[intervalLengthToDisplay + k][2]);
+      }
+      this.chart.data.datasets.push({
+        label: data.labelDescription,
+        data: upper, // Specify the data values array
+        fill: false,
+        borderColor: "#000", // Add custom color border (Line)
+        borderWidth: 0, // Specify bar border width
+        showLines: false
+      });
+
+      let lower = [];
+      for (let j = 0; j < intervalLengthToDisplay; j++) {
+        lower.push(null);
+      }
+      for (let k = 0; k < predictionLength; k++) {
+        lower.push(data.value[intervalLengthToDisplay + k][3]);
+      }
+      this.chart.data.datasets.push({
+        label: data.labelDescription,
+        data: lower, // Specify the data values array
+        fill: false,
+        borderColor: "#000", // Add custom color border (Line)
+        borderWidth: 0, // Specify bar border width
+        showLines: false
+      });
+
       this.chart.update();
       this.loading = false;
       return;
     },
     updateChart: async function() {
+      if (currentIndex + predictionLength >= absolutLengthOfData) {
+        currentIndex = 300;
+      }
       //replace this
-      this.chart.data.labels.push(Date.now());
-      let newValue =
-        this.chart.data.datasets[0].data[
-          this.chart.data.datasets[0].data.length - 1
-        ] +
-        Math.random() -
-        0.5;
-      if (newValue >= 10) {
-        newValue = 10;
+      this.chart.data.labels.push(Date.now() + predictionLength * dt);
+
+      this.chart.data.datasets[0].data.push(data.value[currentIndex + 1][0]);
+      this.chart.data.datasets[1].data.push(
+        data.value[currentIndex + predictionLength + 1][1]
+      );
+      this.chart.data.datasets[2].data.push(
+        data.value[currentIndex + predictionLength + 1][2]
+      );
+      this.chart.data.datasets[3].data.push(
+        data.value[currentIndex + predictionLength + 1][3]
+      );
+
+      for (let i = 1; i < 4; i++) {
+        this.chart.data.datasets[i].data[
+          this.chart.data.datasets[i].data.length - predictionLength
+        ] = null;
       }
-      if (newValue < 0) {
-        newValue = 0;
-      }
-      if (newValue > 9) {
+
+      /*if (newValue > 9) {
         this.$emit("red", newValue);
       } else if (newValue > 7) {
         this.$emit("yellow", newValue);
       } else {
         this.$emit("green", newValue);
       }
-
-      this.chart.data.datasets[0].data.push(newValue);
-      if (this.chart.data.labels.length > 100) {
-        this.chart.data.labels.splice(0, 1);
-        this.chart.data.datasets[0].data.splice(0, 1);
+      this.chart.data.datasets[0].data.push(newValue);*/
+      this.chart.data.labels.splice(0, 1);
+      for (let i = 0; i < 4; i++) {
+        this.chart.data.datasets[i].data.splice(0, 1);
       }
+
+      currentIndex++;
+
       this.chart.update();
     }
   },
