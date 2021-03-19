@@ -102,12 +102,12 @@
                 </v-card-subtitle>
                 <v-card-text>
                   <strong>Notwendige Handlung:</strong>
-                  <v-container>
+                  <v-container class="mb-3">
                     <v-row class="ml-3">Stop der Maschine und Werkzeugwechsel (Kosten: XX EUR)</v-row>
                   </v-container>
                   <strong>Mögliche zukünftige Handlungen:</strong>
 
-                  <v-container>
+                  <v-container class="mb-3">
                     <v-row class="ml-3">Wechsel zu Ersatzwerkzeug (Kosten: XX EUR)</v-row>
                     <v-row class="ml-3">
                       Wechsel zu einem alternativen Produkt
@@ -117,6 +117,14 @@
                         <v-row>Kosten Produkt D (Kosten: XX EUR)</v-row>
                       </v-container>
                     </v-row>
+                  </v-container>
+                  <strong class="mt-3">Empfohlene Handlungen:</strong>
+                  <v-container class="mb-3">
+                    <v-row class="ml-3">Stoppen der Maschine und Wechsel auf das Ersatzwerkzeug</v-row>
+                  </v-container>
+                  <strong>Geschätzte Zeit und Kosten der Empfehlung:</strong>
+                  <v-container class="mb-3">
+                    <v-row class="ml-3">XXh, YY EUR</v-row>
                   </v-container>
                 </v-card-text>
               </v-card>
