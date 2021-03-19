@@ -13,7 +13,7 @@
 <script>
 import Chart from "chart.js";
 
-const dt = 50;
+const dt = 300;
 
 let data = require("./DataStatus.json");
 const absolutLengthOfData = data.value.length;
@@ -191,8 +191,9 @@ export default {
       return;
     },
     updateChart: async function() {
-      if (currentIndex + predictionLength >= absolutLengthOfData) {
+      if (currentIndex + predictionLength + 1 >= absolutLengthOfData) {
         currentIndex = 300;
+        console.log("new");
       }
       //replace this
       this.chart.data.labels.push(Date.now() + predictionLength * dt);

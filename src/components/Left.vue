@@ -14,10 +14,10 @@
     <v-row>
       <v-col class="ml-12">
         <div
-          v-if="lightStatusAbstreifen==='red'"
+          v-if="lightStatusSchneiden==='red'"
         >Anomalie prognostiziert, Werkzeugwartung erforderlich.</div>
         <div
-          v-else-if="lightStatusAbstreifen==='yellow'"
+          v-else-if="lightStatusSchneiden==='yellow'"
         >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
         <div v-else>Keine Handeln notwendig</div>
       </v-col>
