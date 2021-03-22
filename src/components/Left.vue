@@ -19,7 +19,7 @@
         <div
           v-else-if="lightStatusSchneiden==='yellow'"
         >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
-        <div v-else>Keine Handeln notwendig</div>
+        <div v-else>Kein Handeln notwendig</div>
       </v-col>
       <v-col align="end">
         <div v-if="lightStatusSchneiden==='red'">
@@ -62,7 +62,7 @@
         <div
           v-else-if="lightStatusAbstreifen==='yellow'"
         >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
-        <div v-else>Keine Handeln notwendig</div>
+        <div v-else>Kein Handeln notwendig</div>
       </v-col>
     </v-row>
   </v-card>
