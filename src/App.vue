@@ -39,6 +39,8 @@
       </v-container>
     </v-main>
     <v-footer>
+      &copy;
+      <div class="ml-1">Kristof Herrmann</div>
       <v-spacer />
 
       <v-btn text small href="https://www.feintool.com/en/" target="_blank">
