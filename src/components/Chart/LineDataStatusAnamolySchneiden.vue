@@ -1,12 +1,24 @@
 <template>
   <div style="position: relative; height:100%; width:100%">
-    <!--<div class="ml-7">Verschleiß index {{anomalyIndex}}</div>-->
+    
     <canvas ref="canvas"></canvas>
 
     <v-overlay absolute v-if="loading">
       <v-progress-circular indeterminate size="32"></v-progress-circular>
     </v-overlay>
     <v-overlay absolute v-if="notAvailable">{{notAvailableMessage}}</v-overlay>
+
+    <v-row style="margin-left:5px" class="pt-9 status_details">
+                  <strong>Status :   </strong>
+                    Kritischer Verschleiß prognostiziert
+                </v-row>
+
+                <v-row style="margin-left:5px" class="pt-4 status_details">
+                  <strong >Lokale Verschleiß-Metrik :   </strong>
+                  {{anamolyMetricValue}}
+                  
+    </v-row>
+                
   </div>
 </template>
 
@@ -15,7 +27,7 @@ import Chart from "chart.js";
 
 const dt = 1500;
 
-let data = require("./DataStatus.json");
+let data = require("./DataStatusAnamolySchneiden.json");
 const absolutLengthOfData = data.value.length;
 const intervalLengthToDisplay = 17;
 const predictionLength = 5;
@@ -45,13 +57,19 @@ export default {
       connected: false,
       notAvailable: false,
       notAvailableMessage: "",
-      timer: null
+      timer: null,
+      interval_1 : null,
+      anamolyDetectedMatrix : [0.86,	0.85,	0.79,	0.83,	0.98,	0.94,	0.8,	0.87,	0.83,	0.99,	0.83,	0.93,	0.95,	0.93,	0.93,0.89,	0.97,	0.91,	0.84,	0.94,	0.88,	0.81,	0.76,	0.87,	0.76,	0.86,	0.85,	0.79,	0.83,	0.98,	0.94,	0.8,	0.87,	0.83, 0.99,	0.83,	0.93,	0.95,	0.93,	0.93,	0.89,	0.97,	0.91,	0.84,	0.94,	0.88,	0.81,	0.76,	0.87,	0.76,	0.86,	0.85,	0.79,0.83,	0.98,	0.94,	0.8,	0.87,	0.83,	0.99,	0.83,	0.93,	0.95,	0.93,	0.93,	0.89,	0.97,	0.91,	0.84,	0.94,	0.88,	0.81,0.76,	0.87,	0.76,	0.86,	0.85,	0.79,	0.83,	0.98,	0.94,	0.8,0.87,	0.83,	0.99,	0.83,	0.93,	0.95,	0.93,	0.93,	0.89,0.97,	0.91,	0.84,	0.94,	0.88,	0.81,	0.76,	0.87,	0.76],
+      anamolyIndex : 0,
+      anamolyMetricValue:0.86,
+    
     };
   },
   async mounted() {
     this.init();
     await this.loadData();
     this.timer = setInterval(this.updateChart, dt);
+    this.interval_1 = setInterval(this.timerAnamolyMatrix, 1000);
   },
   methods: {
     init() {
@@ -70,7 +88,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 120,
+                max: 15,
                 //maxRotation: 50,
                 //minRotation: 50
               }
@@ -124,6 +142,14 @@ export default {
 
       let ctx = this.$refs.canvas.getContext("2d");
       this.chart = new Chart(ctx, { type: "line", data, options });
+    },
+    
+        timerAnamolyMatrix() {
+      if(this.anamolyIndex > this.anamolyDetectedMatrix.length-1){
+        this.anamolyIndex = 1
+      }
+      this.anamolyMetricValue = this.anamolyDetectedMatrix[this.anamolyIndex++];
+      
     },
 
     loadData: async function() {
@@ -240,10 +266,7 @@ export default {
             Math.abs(
               this.chart.data.datasets[0].data[
                 this.chart.data.datasets[0].data.length - 1
-              ] -
-                this.chart.data.datasets[1].data[
-                  this.chart.data.datasets[0].data.length - 1
-                ]
+              ]
             ) * 100000
           ) / 10000000
         );

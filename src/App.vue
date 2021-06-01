@@ -15,7 +15,7 @@
       <div
         class="text-h5"
         v-if="!$vuetify.breakpoint.mobile"
-      >Anomalie-Erkennung beim Feinschneiden zur Verschleißprognose</div>
+      ><strong>Verschleißprognose beim Feinschneiden</strong></div>
       <v-spacer></v-spacer>
       <v-img
         alt="Vuetify Logo"
@@ -39,8 +39,6 @@
       </v-container>
     </v-main>
     <v-footer>
-      &copy;
-      <div class="ml-1">Kristof Herrmann</div>
       <v-spacer />
 
       <v-btn text small href="https://www.feintool.com/en/" target="_blank">

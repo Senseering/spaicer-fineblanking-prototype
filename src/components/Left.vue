@@ -11,59 +11,118 @@
         />
       </v-col>
     </v-row>
-    <v-row>
-      <v-col class="ml-12">
-        <div
-          v-if="lightStatusSchneiden==='red'"
-        >Anomalie prognostiziert, Werkzeugwartung erforderlich.</div>
-        <div
-          v-else-if="lightStatusSchneiden==='yellow'"
-        >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
-        <div v-else>Kein Handeln notwendig</div>
-      </v-col>
+    <v-row style="margin-top:24px">
       <v-col align="end">
-        <div v-if="lightStatusSchneiden==='red'">
-          <span class="css-ampel ampelrot">
+        <div class="css-align" v-if="lightStatusSchneiden==='red'">
+          <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        
+        <p class="heading_div text--primary">
+          Schneiden
+        </p>
+        <span class="css-ampel ampelrot">
             <span></span>
           </span>
+        <div class="suggestion_div"><strong>Status Vorhersage:</strong>&nbsp; kritischer lokaler Verschleiß prognostiziert </div>
+      </v-card-text>
+      
+    </v-card>
+          
         </div>
-        <div v-else-if="lightStatusSchneiden==='yellow'">
-          <span class="css-ampel ampelgelb">
+        <div class="css-align" v-else-if="lightStatusSchneiden==='yellow'">
+          <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        <p class="heading_div text--primary">
+          Schneiden
+        </p>
+        <span class="css-ampel ampelgelb">
             <span></span>
           </span>
+                     <div class="suggestion_div"><strong>Status Vorhersage:</strong> &nbsp;leichter lokaler Verschleiß prognostiziert</div>
+      </v-card-text>
+      
+    </v-card>
+          
         </div>
-        <div v-else>
-          <span class="css-ampel ampelgruen">
+        <div v-else class="css-align">
+          <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        <p class="heading_div text--primary">
+          Schneiden
+        </p>
+        <span class="css-ampel ampelgruen">
             <span></span>
           </span>
+        <div class="suggestion_div"><strong> Status Vorhersage:</strong>&nbsp; OK </div>
+      </v-card-text>
+      
+    </v-card>
+          
         </div>
       </v-col>
       <v-col>
-        <div v-if="lightStatusAbstreifen==='red'">
-          <span class="css-ampel ampelrot">
+        
+        <div class="css-align" v-if="lightStatusAbstreifen==='red'">
+        <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        <p class="heading_div text--primary">
+          Abstreifen
+        </p>
+        <span class="css-ampel ampelrot">
             <span></span>
           </span>
+        <div class="suggestion_div"><strong>Status Vorhersage:</strong> &nbsp;kritischer lokaler Verschleiß prognostiziert </div>
+      </v-card-text>
+      
+    </v-card>
         </div>
-        <div v-else-if="lightStatusAbstreifen==='yellow'">
-          <span class="css-ampel ampelgelb">
+        <div class="css-align" v-else-if="lightStatusAbstreifen==='yellow'">
+              <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        <p class="heading_div text--primary">
+          Abstreifen
+        </p>
+        <span class="css-ampel ampelgelb">
             <span></span>
           </span>
+                     <div class="suggestion_div"><strong>Status Vorhersage: </strong> &nbsp;leichter lokaler Verschleiß prognostiziert</div>
+      </v-card-text>
+      </v-card>
         </div>
-        <div v-else>
-          <span class="css-ampel ampelgruen">
+        <div class="css-align" v-else>
+          <v-card
+      class="mx-auto"
+      max-width="344"
+    >
+      <v-card-text>
+        <p class="heading_div text--primary">
+          Abstreifen
+        </p>
+        <span class="css-ampel ampelgruen">
             <span></span>
           </span>
+        <div class="suggestion_div"><strong>Status Vorhersage: </strong> &nbsp; OK </div>
+      </v-card-text>
+      
+    </v-card>
         </div>
       </v-col>
-      <v-col class="mr-12">
-        <div
-          v-if="lightStatusAbstreifen==='red'"
-        >Anomalie prognostiziert, Werkzeugwartung erforderlich.</div>
-        <div
-          v-else-if="lightStatusAbstreifen==='yellow'"
-        >Anomalie prognostiziert, Werkzeugwartung möglicherweise bald erforderlich</div>
-        <div v-else>Kein Handeln notwendig</div>
-      </v-col>
+      
     </v-row>
   </v-card>
 </template>
@@ -72,32 +131,62 @@
 export default {
   data: () => ({
     lightStatusSchneiden: "green",
-    lightStatusAbstreifen: "green"
+    lightStatusAbstreifen: "green",
+    lightStatusCombined: "red",
+    lightCounter :0,
+    curr_abstreifen_val:0,
+    curr_schneiden_val:0,
+    abstreifen_data : [1.61,1.68,1.77,1.75,1.75,1.87,1.85,1.8,1.98,1.97,1.98,2.06,2.07,2.08,2.07,2.17,2.18,2.13,2.22,2.09,2.19,2.28,2.35,2.33,2.35,2.45,2.52,2.48,2.71,2.82,2.56,2.61,2.62,2.62],
+    schneiden_data : [1.58,	1.65,	1.67,	1.67,	1.67,	1.78,	1.7,	1.64,	1.8,	1.73,	1.61,	1.76,	1.79,	1.78,	1.79,	1.9,	1.87,	1.8,	1.98,	1.95,	1.95,	2,	2.05,	2.05,	2.38,	2.85,	3.22,	4.33,	3.82,	5.38,	2.34,	2.41,	2.32,	2.26]
+    
   }),
   methods: {
-    timer() {
-      //this needs to be updated with real data
-      let lightStatusSchneidenRandom = Math.random();
-      if (lightStatusSchneidenRandom > 0.9) {
-        this.lightStatusSchneiden = "rot";
-      } else if (lightStatusSchneidenRandom > 0.75) {
-        this.lightStatusSchneiden = "yellow";
-      } else {
-        this.lightStatusSchneiden = "green";
+    timer() { 
+      this.curr_abstreifen_val = this.abstreifen_data[this.lightCounter];
+      this.curr_schneiden_val = this.schneiden_data[this.lightCounter];
+      //curr_combine_val = this.combine_data[this.lightCounter];
+      if(this.curr_abstreifen_val>2.53){
+        this.lightStatusAbstreifen = "red";
       }
-
-      let lightStatusAbstreifenRandom = Math.random();
-      if (lightStatusAbstreifenRandom > 0.9) {
-        this.lightStatusAbstreifen = "rot";
-      } else if (lightStatusAbstreifenRandom > 0.75) {
-        this.lightStatusAbstreifen = "yellow";
-      } else {
+      else{
         this.lightStatusAbstreifen = "green";
       }
+
+      if(this.curr_schneiden_val < 2){
+        this.lightStatusSchneiden = "green";
+      }
+      else {
+        this.lightStatusSchneiden = "red";
+      }
+      
+      this.lightCounter++;
+      if(this.lightCounter>32){
+        this.lightCounter = 0;
+      }
+/*
+      if(this.lightCounter==0) {
+        this.lightStatusSchneiden = "green";
+        this.lightStatusAbstreifen = "green";
+        this.lightCounter++;
+      } else if (this.lightCounter == 1) {
+        this.lightStatusSchneiden = "red";
+        this.lightStatusAbstreifen = "green";
+        this.lightCounter++;
+      }
+      else if (this.lightCounter == 2) {
+        this.lightStatusSchneiden = "red";
+        this.lightStatusAbstreifen = "yellow";
+        this.lightCounter++;
+      } else {
+        this.lightStatusSchneiden = "green";
+        this.lightStatusAbstreifen = "green";
+        this.lightCounter++;
+      }
+*/      
     }
   },
   mounted() {
-    this.interval = setInterval(this.timer, 3000);
+    this.interval = setInterval(this.timer, 1000);
   }
 };
 </script>
@@ -157,5 +246,17 @@ export default {
 .ampelgruen span {
   background-color: limegreen;
   box-shadow: 0 0 20px limegreen;
+}
+
+.heading_div {
+  font-size: 26px;
+  font-weight:600;
+}
+.css-align {
+  text-align: center;
+}
+.suggestion_div{
+font-weight: 600;
+    font-size: 16px;
 }
 </style>
