@@ -13,7 +13,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <div class="text-h5" v-if="!$vuetify.breakpoint.mobile">
-        <strong>Verschleißprognose beim Feinschneiden</strong>
+        <strong>{{ $t('title') }}</strong>
       </div>
       <v-spacer></v-spacer>
       <v-img
@@ -79,6 +79,21 @@
           width="100"
         />
       </v-btn>
+      <v-menu>
+        <template v-slot:activator="{ on, attrs }">
+          <v-btn depressed class="mr-auto" small v-bind="attrs" v-on="on">
+            <v-icon class="mr-2" small>language</v-icon>
+            <span v-if="!$vuetify.breakpoint.mobile">{{languages[selectedLanguage].title}}</span>
+          </v-btn>
+        </template>
+        <v-list dense>
+          <v-list-item-group v-model="selectedLanguage" color="primary">
+            <v-list-item v-for="(language, id) in languages" :key="id">
+              <v-list-item-title>{{ language.title }}</v-list-item-title>
+            </v-list-item>
+          </v-list-item-group>
+        </v-list>
+      </v-menu>
     </v-footer>
   </v-app>
 </template>
@@ -95,7 +110,27 @@ export default {
     Right
   },
 
+  mounted() {
+    this.selectedLanguage = this.languages.findIndex(
+      v => this.$root.$i18n.locale === v.id
+    );
+  },
+
+  watch: {
+    async selectedLanguage(val) {
+      this.$root.$i18n.locale = this.languages[val].id;
+      this.$vuetify.lang.current = this.$root.$i18n.locale;
+      localStorage.setItem("locale", this.$root.$i18n.locale);
+    }
+  },
+
   data: () => ({
+    selectedLanguage: "en",
+
+    languages: [
+      { id: "de", title: "Deutsch" },
+      { id: "en", title: "English (US)" }
+    ],
     items: [
       { title: "Home", icon: "mdi-home-city" },
       { title: "My Account", icon: "mdi-account" },
