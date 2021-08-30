@@ -2,28 +2,28 @@
   <v-app>
     <v-app-bar app color="white" class="elevation-1">
       <v-btn class="mx-0" text href="https://spaicer.de" target="_blank">
-        <v-img
+      <!--  <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
           src="@/assets/spaicer.png"
           transition="scale-transition"
           width="120"
-        />
+        />-->
       </v-btn>
       <v-spacer></v-spacer>
       <div class="text-h5" v-if="!$vuetify.breakpoint.mobile">
         <strong>{{ $t('title') }}</strong>
       </div>
       <v-spacer></v-spacer>
-      <v-img
+      <!--<v-img
         alt="Vuetify Logo"
         class="shrink ma-2"
         contain
         src="@/assets/bmwi.png"
         transition="scale-transition"
         max-width="120"
-      />
+      />-->
     </v-app-bar>
     <v-main>
       <v-container fluid justify="center">
@@ -40,7 +40,7 @@
     <v-footer>
       <v-spacer />
       <v-btn text small href="https://www.wzl.rwth-aachen.de/go/id/sijq/?lidx=1" target="_blank">
-        <v-img
+        <!--<v-img
           alt="Vuetify Logo"
           class="shrink"
           contain
@@ -78,7 +78,7 @@
           transition="scale-transition"
           width="100"
         />
-      </v-btn>
+      </v-btn>-->
       <v-menu>
         <template v-slot:activator="{ on, attrs }">
           <v-btn depressed class="mr-auto" small v-bind="attrs" v-on="on">
