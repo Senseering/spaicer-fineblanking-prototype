@@ -526,7 +526,7 @@ export default {
       this.items = [
         { title: "Status Fineblanking" },
         { title: "Wear" },
-        { title: "Aasdf" }
+        { title: "Recommendation for action" }
       ];
     }
   }
