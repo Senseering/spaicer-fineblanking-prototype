@@ -113,7 +113,6 @@ export default {
     this.selectedLanguage = this.languages.findIndex(
       v => localStorage.getItem("locale") === v.id
     );
-    this.this.$root.$i18n.locale = localStorage.getItem("locale");
   },
   watch: {
     async selectedLanguage(val) {
