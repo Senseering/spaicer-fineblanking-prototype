@@ -425,6 +425,7 @@ export default {
   mounted() {
       this.interval = setInterval(this.timer, 1000);
       this.interval_1 = setInterval(this.timerAnamolyMatrix, 1000);
+      console.log(this.$i18n)
   }
 };
 </script>
