@@ -39,8 +39,8 @@
     </v-main>
     <v-footer>
       <v-spacer />
-      <v-btn text small href="https://www.wzl.rwth-aachen.de/go/id/sijq/?lidx=1" target="_blank">
-        <!--<v-img
+     <!-- <v-btn text small href="https://www.wzl.rwth-aachen.de/go/id/sijq/?lidx=1" target="_blank">
+        <v-img
           alt="Vuetify Logo"
           class="shrink"
           contain

@@ -12,7 +12,7 @@ const messages = {
         "prediction": "Status Vorhersage:",
         "prediction_wear": "kritischer lokaler Verschleiß prognostiziert",
         "predcition_light" : "Leichter Verschleiß",
-        "predcition_global_wear" : "Globaler Verschleiß prognostiziert",
+        "prediction_global_wear" : "Globaler Verschleiß prognostiziert",
         "status_tool": "Status Werkzeug",
         "current_run": "Aktueller Lauf:",
         "action" :"Handlung empfohlen:",
@@ -41,6 +41,7 @@ const messages = {
         "text12":"Weitere Informationen",
         "text13":"Informationen zu:",
         "text14":"Alles klar",
+        "test":"Test"
     },
     'en': {
         'title': 'Wear prediction in fine blanking',
@@ -49,14 +50,14 @@ const messages = {
         "prediction": "Status Prediction:",
         "prediction_wear": "critical local wear predicted",
         "predcition_light" : "light wear",
-        "predcition_global_wear" : "Global wear predicted",
+        "prediction_global_wear" : "Global wear predicted",
         "status_tool": "Status Tool",
-        "current_run": "Current Run:",
+         "current_run": "Current Run:",
         "action" : "Action Recommended:",
         "todo1" : "Critical global wear predicted. Tool maintenance necessary",
         "todo2" : "Slight global wear predicted. Tool maintenance may be required soon.",
         "todo3" : " No action necessary",
-        "prection_a_cr": "Critical wear predicted based on accustic emission signal",
+        "prediction_a_cr": "Critical wear predicted based on accustic emission signal",
         "prediction_ae_li": "Light local wear predicted based on accustic emission signal.",
         "tool_cr": "Critical condition of tool predicted ",
         "probability": "Probability: 89%",                  
@@ -78,6 +79,7 @@ const messages = {
         "text12": "Additional Information",
         "text13": "Information on:",
         "text14": "All clear",
+        "test":"Test"
         },
 };
 

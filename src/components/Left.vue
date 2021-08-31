@@ -26,7 +26,7 @@
         <span class="css-ampel ampelrot">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong>{{ $t('predicition') }}</strong>&nbsp; {{ $t('predicition_wear') }} </div>
+        <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong>&nbsp; {{ $t('prediction_wear') }} </div>
       </v-card-text>
       
     </v-card>
@@ -44,7 +44,7 @@
         <span class="css-ampel ampelgelb">
             <span></span>
           </span>
-                     <div class="suggestion_div"><strong>{{ $t('predicition') }}</strong> &nbsp;{{ $t('predicition_wear') }}</div>
+                     <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong> &nbsp;{{ $t('prediction_wear') }}</div>
       </v-card-text>
       
     </v-card>
@@ -62,7 +62,7 @@
         <span class="css-ampel ampelgruen">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong> {{ $t('predicition') }}</strong>&nbsp; OK </div>
+        <div class="suggestion_div"><strong> {{ $t('prediction') }}</strong>&nbsp; OK </div>
       </v-card-text>
       
     </v-card>
@@ -83,7 +83,7 @@
         <span class="css-ampel ampelrot">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong>{{ $t('predicition') }}</strong> &nbsp;{{ $t('predicition_wear') }} </div>
+        <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong> &nbsp;{{ $t('prediction_wear') }} </div>
       </v-card-text>
       
     </v-card>
@@ -100,7 +100,7 @@
         <span class="css-ampel ampelgelb">
             <span></span>
           </span>
-                     <div class="suggestion_div"><strong>{{ $t('predicition') }} </strong> &nbsp;{{ $t('predicition_wear') }}</div>
+                     <div class="suggestion_div"><strong>{{ $t('prediction') }} </strong> &nbsp;{{ $t('prediction_wear') }}</div>
       </v-card-text>
       </v-card>
         </div>
@@ -116,7 +116,7 @@
         <span class="css-ampel ampelgruen">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong> {{ $t('predicition') }} </strong> &nbsp; OK </div>
+        <div class="suggestion_div"><strong> {{ $t('prediction') }} </strong> &nbsp; OK </div>
       </v-card-text>
       
     </v-card>

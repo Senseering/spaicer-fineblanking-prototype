@@ -210,9 +210,9 @@
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
-                    > {{ $t('predicition_a_cr') }}</v-row>
+                    > {{ $t('prediction_a_cr') }}</v-row>
                   </v-container>
-                  <strong>{{ $t('process1') }}</strong>
+                  <strong>{{ $t('process2') }}</strong>
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
@@ -236,7 +236,7 @@
                   <strong>{{ $t('text2') }}</strong>
 
                   <v-container class="mb-3">
-                    <v-row class="ml-3"{{ $t('text3') }}</v-row>
+                    <v-row class="ml-3">{{ $t('text3') }}</v-row>
                     <v-row class="ml-3">
                       {{ $t('text4') }}
                       <v-container class="ml-7">
