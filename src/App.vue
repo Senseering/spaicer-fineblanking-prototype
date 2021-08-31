@@ -2,7 +2,7 @@
   <v-app>
     <v-app-bar app color="white" class="elevation-1">
       <v-btn class="mx-0" text href="https://spaicer.de" target="_blank">
-      <!--  <v-img
+        <!--  <v-img
           alt="Vuetify Logo"
           class="shrink mr-2"
           contain
@@ -39,7 +39,7 @@
     </v-main>
     <v-footer>
       <v-spacer />
-     <!-- <v-btn text small href="https://www.wzl.rwth-aachen.de/go/id/sijq/?lidx=1" target="_blank">
+      <!-- <v-btn text small href="https://www.wzl.rwth-aachen.de/go/id/sijq/?lidx=1" target="_blank">
         <v-img
           alt="Vuetify Logo"
           class="shrink"
@@ -109,13 +109,12 @@ export default {
     Left,
     Right
   },
-
   mounted() {
     this.selectedLanguage = this.languages.findIndex(
-      v => this.$root.$i18n.locale === v.id
+      v => localStorage.getItem("locale") === v.id
     );
+    this.this.$root.$i18n.locale = localStorage.getItem("locale");
   },
-
   watch: {
     async selectedLanguage(val) {
       this.$root.$i18n.locale = this.languages[val].id;
