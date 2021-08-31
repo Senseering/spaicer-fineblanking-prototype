@@ -21,12 +21,12 @@
       <v-card-text>
         
         <p class="heading_div text--primary">
-          Schneiden
+          {{ $t('process1') }}
         </p>
         <span class="css-ampel ampelrot">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong>Status Vorhersage:</strong>&nbsp; kritischer lokaler Verschleiß prognostiziert </div>
+        <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong>&nbsp; {{ $t('prediction_wear') }} </div>
       </v-card-text>
       
     </v-card>
@@ -39,12 +39,12 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Schneiden
+          {{ $t('process1') }}
         </p>
         <span class="css-ampel ampelgelb">
             <span></span>
           </span>
-                     <div class="suggestion_div"><strong>Status Vorhersage:</strong> &nbsp;leichter lokaler Verschleiß prognostiziert</div>
+                     <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong> &nbsp;{{ $t('prediction_wear') }}</div>
       </v-card-text>
       
     </v-card>
@@ -57,12 +57,12 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Schneiden
+          {{ $t('process1') }}
         </p>
         <span class="css-ampel ampelgruen">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong> Status Vorhersage:</strong>&nbsp; OK </div>
+        <div class="suggestion_div"><strong> {{ $t('prediction') }}</strong>&nbsp; OK </div>
       </v-card-text>
       
     </v-card>
@@ -78,12 +78,12 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Abstreifen
+          {{ $t('process2') }}
         </p>
         <span class="css-ampel ampelrot">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong>Status Vorhersage:</strong> &nbsp;kritischer lokaler Verschleiß prognostiziert </div>
+        <div class="suggestion_div"><strong>{{ $t('prediction') }}</strong> &nbsp;{{ $t('prediction_wear') }} </div>
       </v-card-text>
       
     </v-card>
@@ -95,12 +95,12 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Abstreifen
+          {{ $t('process2') }}
         </p>
         <span class="css-ampel ampelgelb">
             <span></span>
           </span>
-                     <div class="suggestion_div"><strong>Status Vorhersage: </strong> &nbsp;leichter lokaler Verschleiß prognostiziert</div>
+                     <div class="suggestion_div"><strong>{{ $t('prediction') }} </strong> &nbsp;{{ $t('prediction_wear') }}</div>
       </v-card-text>
       </v-card>
         </div>
@@ -111,12 +111,12 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Abstreifen
+          {{ $t('process2') }}
         </p>
         <span class="css-ampel ampelgruen">
             <span></span>
           </span>
-        <div class="suggestion_div"><strong>Status Vorhersage: </strong> &nbsp; OK </div>
+        <div class="suggestion_div"><strong> {{ $t('prediction') }} </strong> &nbsp; OK </div>
       </v-card-text>
       
     </v-card>

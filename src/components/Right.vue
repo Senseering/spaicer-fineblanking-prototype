@@ -18,7 +18,7 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Status Werkzeug
+          {{ $t('status_tool') }}
         </p>
         <v-container>
         
@@ -30,16 +30,16 @@
         </v-col>
          <v-col md="8" >
                 <v-row class="pt-7 status_details">
-                  Aktueller Lauf:
+                  {{ $t('current_run') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
                 <v-row class="pt-7 status_details">
-                  Status Vorhersage:
-                  <strong class="ml-3">kritischer Verschleiß</strong>
+                  {{ $t('prediction') }}
+                  <strong class="ml-3">{{ $t('prediction_wear') }}</strong>
                 </v-row>
                                <v-row class="pt-7 ">
-                  <strong class="action_status"> Handlung empfohlen:  </strong>
-                </v-row><v-row class="pt-1 action_recommend"> Kritischer globaler Verschleiß prognostiziert. Werkzeugwartung notwendig
+                  <strong class="action_status"> {{ $t('action') }}  </strong>
+                </v-row><v-row class="pt-1 action_recommend"> {{ $t('todo1') }}
                        </v-row>
 
               </v-col>
@@ -57,7 +57,7 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Status Werkzeug
+           {{ $t('status_tool') }}
         </p>
         <v-row>
           <v-col md="4">
@@ -67,16 +67,16 @@
           </v-col>
                   <v-col md="8">
                 <v-row class="pt-7 status_details">
-                  Aktueller Lauf:
+                  {{ $t('current_run') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
                 <v-row class="pt-7 status_details">
-                  Status Vorhersage:
-                  <strong class="ml-3">Leichter Verschleiß</strong>
+                   {{ $t('prediction') }}
+                  <strong class="ml-3"> {{ $t('prediction_light') }}</strong>
                 </v-row>
                                 <v-row class="pt-7 ">
-                  <strong class="action_status"> Handlung empfohlen:  </strong>
-                </v-row><v-row class="pt-1 action_recommend">  Leichter globaler Verschleiß prognostiziert. Werkzeugwartung möglicherweise bald erforderlich.
+                  <strong class="action_status"> {{ $t('action') }}  </strong>
+                </v-row><v-row class="pt-1 action_recommend"> {{ $t('todo2') }}
                        </v-row>
 
               </v-col>
@@ -94,7 +94,7 @@
     >
       <v-card-text>
         <p class="heading_div text--primary">
-          Status Werkzeug
+           {{ $t('status_tool') }}
         </p>
         <v-row>
           <v-col md="4">
@@ -104,17 +104,17 @@
           </v-col>
         <v-col md="8">
                 <v-row class="pt-7 status_details">
-                  Aktueller Lauf:
+                  {{ $t('current_run') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
                 <br />
                 <v-row class="pt-7 status_details">
-                  Status Vorhersage:
+                   {{ $t('prediction') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
                 <v-row class="pt-7 ">
-                  <strong class="action_status"> Handlung empfohlen:  </strong>
-                </v-row><v-row class="pt-1 action_recommend">  Kein Handeln notwendig
+                  <strong class="action_status"> {{ $t('action') }}  </strong>
+                </v-row><v-row class="pt-1 action_recommend">  {{ $t('todo3') }}
                        </v-row>
               </v-col>
          </v-row>
@@ -138,14 +138,14 @@
           <div v-if="i===1">
             <v-row>
               <v-col md="6">
-                <v-row style="margin-left:4px"><strong>Schneiden</strong></v-row>
+                <v-row style="margin-left:4px"><strong>{{ $t('process1') }}</strong></v-row>
                 <v-row class="pt-6"></v-row>                
             <v-card flat height="300" class="pb-3">
                   <LineDataStatusAnamolySchneiden @red="red" @yellow="yellow" @green="green" />
                 </v-card>
               </v-col>
               <v-col md="6">
-                <v-row style="margin-left:4px"><strong>Abstreifen</strong></v-row>
+                <v-row style="margin-left:4px"><strong>{{ $t('process2') }}</strong></v-row>
                 <v-row class="pt-6"></v-row>                
             <v-card flat height="300" class="pb-3">
                   <LineDataStatusAnamolyAbstreifen @red="red" @yellow="yellow" @green="green" />
@@ -168,8 +168,8 @@
                   &nbsp;
                 </v-row>
                 <v-row class="pt-8 ">
-                  <strong class="action_status"> Handlung empfohlen:  </strong>
-                </v-row><v-row class="pt-1 action_recommend"> Globaler Verschleiß prognostiziert, Werkzeugwartung erforderlich. 
+                  <strong class="action_status"> {{ $t('action') }}  </strong>
+                </v-row><v-row class="pt-1 action_recommend"> {{ $t('todo1') }} 
                 </v-row>
               </v-col>
             <!--<v-simple-table fixed-header>
@@ -204,55 +204,55 @@
           <div v-if="i===2">
             <v-container justify="center" align="center">
               <v-card outlined>
-                <v-card-title>Globaler Verschleiß prognostiziert</v-card-title>
+                <v-card-title> {{ $t('prediction_global_wear') }} </v-card-title>
                 <v-card-text>
-                  <strong>Prozess Schneiden:</strong>
+                  <strong>{{ $t('process1') }}</strong>
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
-                    >Kritischer Verschleiß anhand des Körperschall-Signals prognostiziert</v-row>
+                    > {{ $t('prediction_a_cr') }}</v-row>
                   </v-container>
-                  <strong>Prozess Abstreifen:</strong>
+                  <strong>{{ $t('process2') }}</strong>
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
-                    >Leichter lokaler Verschleiß anhand des Körperschall-Signals prognostiziert.</v-row>
+                    >{{ $t('prediction_ae_li') }}</v-row>
                   </v-container>
-                  <strong>Status Werkzeug:</strong>
+                  <strong>{{ $t('status_tool') }}</strong>
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
-                    >Kritischer Zustand des Werkzeugs prognostiziert ( <strong> Wahrscheinlichkeit: 89%</strong>)</v-row>
+                    >{{ $t('tool_cr') }} ( <strong> {{ $t('probability') }}</strong>)</v-row>
                   </v-container>
                   
                   
                   
-                  <strong>Notwendige Handlung:</strong>
+                  <strong>{{ $t('ne_action') }}</strong>
                   <v-container class="mb-3">
                     <v-row
                       class="ml-3"
-                    >Stop der Maschine und Werkzeugwechsel (Kosten: 8.000,00 EUR)</v-row>
+                    >{{ $t('text1') }}</v-row>
                   </v-container>
-                  <strong>Mögliche zukünftige Handlungen:</strong>
+                  <strong>{{ $t('text2') }}</strong>
 
                   <v-container class="mb-3">
-                    <v-row class="ml-3">Wechsel zu Ersatzwerkzeug (Kosten: 900,00 EUR)</v-row>
+                    <v-row class="ml-3">{{ $t('text3') }}</v-row>
                     <v-row class="ml-3">
-                      Wechsel zu einem alternativen Produkt
+                      {{ $t('text4') }}
                       <v-container class="ml-7">
-                        <v-row>Kosten Produkt B (Kosten: 4.500,00 EUR)</v-row>
-                        <v-row>Kosten Produkt C (Kosten: 5.000,00 EUR)</v-row>
-                        <v-row>Kosten Produkt D (Kosten: 7.500,00 EUR)</v-row>
+                        <v-row> {{ $t('k1') }}</v-row>
+                        <v-row>{{ $t('k2') }}</v-row>
+                        <v-row>{{ $t('k3') }}</v-row>
                       </v-container>
                     </v-row>
                   </v-container>
-                  <strong class="mt-3">Empfohlene Handlungen:</strong>
+                  <strong class="mt-3">{{ $t('action') }}</strong>
                   <v-container class="mb-3">
-                    <v-row class="ml-3">Stoppen der Maschine und Wechsel auf das Ersatzwerkzeug</v-row>
+                    <v-row class="ml-3">{{ $t('text5') }}</v-row>
                   </v-container>
-                  <strong>Geschätzte Zeit und Kosten der Empfehlung:</strong>
+                  <strong>{{ $t('text6') }}</strong>
                   <v-container class="mb-3">
-                    <v-row class="ml-3">2h, 1.000,00 EUR</v-row>
+                    <v-row class="ml-3">{{ $t('text7') }}</v-row>
                   </v-container>
                 </v-card-text>
                 
@@ -268,16 +268,16 @@
               </v-col>
               <v-col>
                 <v-row>
-                  <strong>Produktionslinie:</strong>
-                  <br />Qualität der aktuellen Vorhersage, basierend auf aktiven Sensoren: 0.85
+                  <strong>{{ $t('text8') }}</strong>
+                  <br />{{ $t('text9') }}
                 </v-row>
 
                 <v-row>
-                  Status Sensor (Schneiden):
+                  {{ $t('text10') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
                 <v-row>
-                  Status Sensor (Schneiden):
+                  {{ $t('text11') }}
                   <strong class="ml-3">OK</strong>
                 </v-row>
               </v-col>
@@ -288,16 +288,16 @@
     </v-expansion-panels>
     <v-dialog v-model="dialog" max-width="500">
       <v-card>
-        <v-card-title class="headline grey lighten-2">Weitere Informationen</v-card-title>
+        <v-card-title class="headline grey lighten-2">{{ $t('text12') }}</v-card-title>
         <v-card-text class="pa-3">
-          Informationen zu:
+          {{ $t('text13') }}
           <strong>{{anomalyInfoTo? anomalyInfoTo.name:""}}</strong>
           {{anomalyInfoTo? anomalyInfoTo.description:""}}
         </v-card-text>
         <v-divider></v-divider>
         <v-card-actions>
           <v-spacer></v-spacer>
-          <v-btn color="primary" text @click="dialog = false">Alles klar</v-btn>
+          <v-btn color="primary" text @click="dialog = false">{{ $t('text14') }}</v-btn>
         </v-card-actions>
       </v-card>
     </v-dialog>
