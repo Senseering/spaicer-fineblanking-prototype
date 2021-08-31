@@ -19,7 +19,7 @@ const messages = {
         "todo1" : "Kritischer globaler Verschleiß prognostiziert. Werkzeugwartung notwendig",
         "todo2" : "Leichter globaler Verschleiß prognostiziert. Werkzeugwartung möglicherweise bald erforderlich.",
         "todo3" : " Kein Handeln notwendig",
-        "prection_a_cr": "Kritischer Verschleiß anhand des Körperschall-Signals prognostiziert",
+        "prediction_a_cr": "Kritischer Verschleiß anhand des Körperschall-Signals prognostiziert",
         "prediction_ae_li":"Leichter lokaler Verschleiß anhand des Körperschall-Signals prognostiziert.",
         "tool_cr":"Kritischer Zustand des Werkzeugs prognostiziert ",
         "probability":"Wahrscheinlichkeit: 89%",                  
