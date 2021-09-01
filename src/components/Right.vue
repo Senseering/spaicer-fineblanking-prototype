@@ -432,9 +432,9 @@ export default {
     anamolyIndex: 0,
     anamolyMetricValue: 0.86,
     items: [
-      { title: "Status Feinschneiden" },
-      { title: "Verschleiß" },
-      { title: "Handlungsempfehlungen" }
+      { title: "Status Fineblanking" },
+      { title: "Wear" },
+      { title: "Recommendation for action" }
     ],
     anomalieList: [
       {
@@ -522,11 +522,11 @@ export default {
   mounted() {
     this.interval = setInterval(this.timer, 1000);
     this.interval_1 = setInterval(this.timerAnamolyMatrix, 1000);
-    if (localStorage.getItem("locale") === "en") {
+    if (localStorage.getItem("locale") === "de") {
       this.items = [
-        { title: "Status Fineblanking" },
-        { title: "Wear" },
-        { title: "Recommendation for action" }
+        { title: "Status Feinschneiden" },
+        { title: "Verschleiß" },
+        { title: "Handlungsempfehlungen" }
       ];
     }
   }

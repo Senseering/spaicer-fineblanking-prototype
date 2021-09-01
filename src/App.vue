@@ -110,6 +110,9 @@ export default {
     Right
   },
   mounted() {
+    if (!localStorage.getItem("locale")) {
+      localStorage.setItem("locale", "en");
+    }
     this.selectedLanguage = this.languages.findIndex(
       v => localStorage.getItem("locale") === v.id
     );
