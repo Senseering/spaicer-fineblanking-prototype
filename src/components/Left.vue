@@ -151,7 +151,7 @@ export default {
     curr_schneiden_val:0,
     abstreifen_data : [1.61,1.68,1.77,1.75,1.75,1.87,1.85,1.8,1.98,1.97,1.98,2.06,2.07,2.08,2.07,2.17,2.18,2.13,2.22,2.09,2.19,2.28,2.35,2.33,2.35,2.45,2.52,2.48,2.71,2.82,2.56,2.61,2.62,2.62],
     schneiden_data : [1.58,	1.65,	1.67,	1.67,	1.67,	1.78,	1.7,	1.64,	1.8,	1.73,	1.61,	1.76,	1.79,	1.78,	1.79,	1.9,	1.87,	1.8,	1.98,	1.95,	1.95,	2,	2.05,	2.05,	2.38,	2.85,	3.22,	4.33,	3.82,	5.38,	2.34,	2.41,	2.32,	2.26],
-    picture: "de"
+    picture: "en"
   }),
   methods: {
     timer() { 
@@ -200,8 +200,8 @@ export default {
   },
   mounted() {
     this.interval = setInterval(this.timer, 1000);
-    if (localStorage.getItem("locale") === "en") {
-      this.picture = 'en';
+    if (localStorage.getItem("locale") === "de") {
+      this.picture = 'de';
     }
   }
 };
