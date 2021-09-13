@@ -1,6 +1,5 @@
 <template>
   <div style="position: relative; height:100%; width:100%">
-    
     <canvas ref="canvas"></canvas>
 
     <v-overlay absolute v-if="loading">
@@ -9,16 +8,15 @@
     <v-overlay absolute v-if="notAvailable">{{notAvailableMessage}}</v-overlay>
 
     <v-row style="margin-left:5px" class="pt-9 status_details">
-                  <strong>Status :   </strong>
-                    Leichter Verschleiß prognostiziert
-                </v-row>
-
-                <v-row style="margin-left:5px" class="pt-4 status_details">
-                  <strong >Lokale Verschleiß-Metrik :   </strong>
-                  {{anamolyMetricValue}}
-                  
+      <strong>Status :</strong>
+      Leichter Verschleiß prognostiziert
     </v-row>
-                
+
+    <v-row style="margin-left:5px" class="pt-4 status_details">
+      <strong>Lokale Verschleiß-Metrik :</strong>
+
+      {{anamolyMetricValue}}
+    </v-row>
   </div>
 </template>
 
@@ -58,11 +56,111 @@ export default {
       notAvailable: false,
       notAvailableMessage: "",
       timer: null,
-      interval_1 : null,
-      anamolyDetectedMatrix : [0.46,	0.42,	0.31,	0.34,	0.45,	0.48,	0.33,	0.49,	0.4,	0.3,	0.33,	0.3,	0.42,	0.41,	0.44,	0.32,	0.47,	0.35,	0.32,	0.4,	0.49,	0.46,	0.38,	0.43,	0.49,	0.47,	0.44,	0.3,	0.5,	0.35,	0.48,	0.44,	0.48,	0.31,	0.38,	0.45,	0.4,	0.34,	0.42,	0.48,	0.45,	0.41,	0.39,	0.49,	0.48,	0.48,	0.3,	0.3,	0.45,	0.39,	0.32,	0.5,	0.45,	0.5,	0.48,	0.37,	0.48,	0.48,	0.34,	0.4,	0.38,	0.5,	0.47,	0.48,	0.38,	0.39,	0.49,	0.44,	0.42,	0.5,	0.3,	0.3,	0.32,	0.4,	0.32,	0.44,	0.3,	0.4,	0.43,	0.35,	0.35,	0.46,	0.45,	0.48,	0.47,	0.49,	0.44,	0.36,	0.31,	0.44,	0.36,	0.31,	0.34,	0.47,	0.36,	0.44,	0.42,	0.48,	0.48,	0.39],
-      anamolyIndex : 0,
-      anamolyMetricValue:0.86,
-    
+      interval_1: null,
+      anamolyDetectedMatrix: [
+        0.46,
+        0.42,
+        0.31,
+        0.34,
+        0.45,
+        0.48,
+        0.33,
+        0.49,
+        0.4,
+        0.3,
+        0.33,
+        0.3,
+        0.42,
+        0.41,
+        0.44,
+        0.32,
+        0.47,
+        0.35,
+        0.32,
+        0.4,
+        0.49,
+        0.46,
+        0.38,
+        0.43,
+        0.49,
+        0.47,
+        0.44,
+        0.3,
+        0.5,
+        0.35,
+        0.48,
+        0.44,
+        0.48,
+        0.31,
+        0.38,
+        0.45,
+        0.4,
+        0.34,
+        0.42,
+        0.48,
+        0.45,
+        0.41,
+        0.39,
+        0.49,
+        0.48,
+        0.48,
+        0.3,
+        0.3,
+        0.45,
+        0.39,
+        0.32,
+        0.5,
+        0.45,
+        0.5,
+        0.48,
+        0.37,
+        0.48,
+        0.48,
+        0.34,
+        0.4,
+        0.38,
+        0.5,
+        0.47,
+        0.48,
+        0.38,
+        0.39,
+        0.49,
+        0.44,
+        0.42,
+        0.5,
+        0.3,
+        0.3,
+        0.32,
+        0.4,
+        0.32,
+        0.44,
+        0.3,
+        0.4,
+        0.43,
+        0.35,
+        0.35,
+        0.46,
+        0.45,
+        0.48,
+        0.47,
+        0.49,
+        0.44,
+        0.36,
+        0.31,
+        0.44,
+        0.36,
+        0.31,
+        0.34,
+        0.47,
+        0.36,
+        0.44,
+        0.42,
+        0.48,
+        0.48,
+        0.39
+      ],
+      anamolyIndex: 0,
+      anamolyMetricValue: 0.86
     };
   },
   async mounted() {
@@ -88,7 +186,7 @@ export default {
               },
               ticks: {
                 beginAtZero: true,
-                max: 15,
+                max: 15
                 //maxRotation: 50,
                 //minRotation: 50
               }
@@ -114,7 +212,7 @@ export default {
         },
         elements: {
           point: { radius: 1 },
-          line: { tension: 1 }
+          line: { tension: 0 }
         },
         responsive: true,
         maintainAspectRatio: false // Add to prevent default behaviour of full-width/height
@@ -133,8 +231,8 @@ export default {
           },
           distribution: "linear",
           ticks: {
-            maxTicksLimit: 3,
-            //maxRotation: 50,  
+            maxTicksLimit: 3
+            //maxRotation: 50,
             //minRotation: 50
           }
         }
@@ -143,13 +241,12 @@ export default {
       let ctx = this.$refs.canvas.getContext("2d");
       this.chart = new Chart(ctx, { type: "line", data, options });
     },
-    
-        timerAnamolyMatrix() {
-      if(this.anamolyIndex > this.anamolyDetectedMatrix.length-1){
-        this.anamolyIndex = 1
+
+    timerAnamolyMatrix() {
+      if (this.anamolyIndex > this.anamolyDetectedMatrix.length - 1) {
+        this.anamolyIndex = 1;
       }
       this.anamolyMetricValue = this.anamolyDetectedMatrix[this.anamolyIndex++];
-      
     },
 
     loadData: async function() {
@@ -222,7 +319,7 @@ export default {
     },
     updateChart: async function() {
       if (currentIndex + predictionLength + 1 >= absolutLengthOfData) {
-        currentIndex = 1 ;
+        currentIndex = 1;
         console.log("new");
       }
       //replace this
@@ -232,10 +329,10 @@ export default {
       this.chart.data.datasets[1].data.push(
         data.value[currentIndex + predictionLength + 1][1]
       );
-      
+
       for (let i = 1; i < 2; i++) {
         this.chart.data.datasets[i].data[
-          this.chart.data.datasets[i].data.length - predictionLength-2
+          this.chart.data.datasets[i].data.length - predictionLength - 2
         ] = null;
       }
 
