@@ -1,6 +1,6 @@
 <template>
   <v-app>
-    <v-app-bar app color="white" class="elevation-1">
+    <v-app-bar app dense flat color="white" class="elevation-1">
       <v-btn class="mx-0" text href="https://spaicer.de" target="_blank">
         <!--  <v-img
           alt="Vuetify Logo"
@@ -13,7 +13,7 @@
       </v-btn>
       <v-spacer></v-spacer>
       <div class="text-h5" v-if="!$vuetify.breakpoint.mobile">
-        <strong>{{ $t('title') }}</strong>
+        <strong>{{ $route.name==='Home'? $t('title1') : $t('title2') }}</strong>
       </div>
       <v-spacer></v-spacer>
       <!--<v-img
@@ -24,18 +24,12 @@
         transition="scale-transition"
         max-width="120"
       />-->
+
+      <v-btn href="/" text>Home</v-btn>
+      <v-btn href="/about" text>About</v-btn>
     </v-app-bar>
     <v-main>
-      <v-container fluid justify="center">
-        <v-row no-gutters justify="center">
-          <v-col>
-            <Left class="mx-auto" />
-          </v-col>
-          <v-col>
-            <Right class="mx-auto" />
-          </v-col>
-        </v-row>
-      </v-container>
+      <router-view />
     </v-main>
     <v-footer>
       <v-spacer />
@@ -98,17 +92,10 @@
   </v-app>
 </template>
 
-<script>
-import Left from "./components/Left.vue";
-import Right from "./components/Right.vue";
 
+<script>
 export default {
   name: "App",
-
-  components: {
-    Left,
-    Right
-  },
   mounted() {
     if (!localStorage.getItem("locale")) {
       localStorage.setItem("locale", "en");
@@ -117,6 +104,15 @@ export default {
       v => localStorage.getItem("locale") === v.id
     );
   },
+  computed: {
+    title() {
+      if (this.$route.name === "Home") {
+        return "title1";
+      } else {
+        return "title2";
+      }
+    }
+  },
   watch: {
     async selectedLanguage(val) {
       this.$root.$i18n.locale = this.languages[val].id;
@@ -124,18 +120,11 @@ export default {
       localStorage.setItem("locale", this.$root.$i18n.locale);
     }
   },
-
   data: () => ({
     selectedLanguage: "en",
-
     languages: [
       { id: "de", title: "Deutsch" },
       { id: "en", title: "English (US)" }
-    ],
-    items: [
-      { title: "Home", icon: "mdi-home-city" },
-      { title: "My Account", icon: "mdi-account" },
-      { title: "Users", icon: "mdi-account-group-outline" }
     ]
   })
 };
