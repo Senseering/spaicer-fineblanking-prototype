@@ -7,7 +7,7 @@ Vue.use(VueI18n);
 const messages = {
     'de': {
         "title1": "Verschleißprognose beim Feinschneiden",
-        "title2": "asdf beim Feinschneiden",
+        "title2": "Kontextbewusste Fehleranalyse",
         "process1": "Schneiden",
         "process2": "Abstreifen",
         "prediction": "Status Vorhersage:",
@@ -42,11 +42,12 @@ const messages = {
         "text12": "Weitere Informationen",
         "text13": "Informationen zu:",
         "text14": "Alles klar",
-        "test": "Test"
+        "test": "Test",
+        "search.query":"Suche"
     },
     'en': {
         'title1': 'Wear prediction in fine blanking',
-        'title2': 'asdf prediction in fine blanking',
+        'title2': 'Context-aware Failure Analysis',
         "process1": "Blank",
         "process2": "Stripping",
         "prediction": "Status Prediction:",
@@ -81,7 +82,8 @@ const messages = {
         "text12": "Additional Information",
         "text13": "Information on:",
         "text14": "All clear",
-        "test": "Test"
+        "test": "Test",
+        "search.query":"Search"
     },
 };
 
