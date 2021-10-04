@@ -3,7 +3,7 @@
     <v-row no-gutters justify="center">
       <v-col>
         <v-container>
-          Gib des Problems:
+          Beschreibung des Problems:
           <v-combobox
             v-model="request"
             filled
@@ -11,6 +11,7 @@
             hide-details
             dense
             :label="$t('search.query')"
+            @change="fetchRecommendations"
           >
           </v-combobox>
           <div v-if="request != null">
@@ -21,8 +22,8 @@
 
             <br />
             <ul>
-              <li v-for="product in products" :key="product._id">
-                {{ product }}
+              <li v-for="info in infos" :key="info._id">
+                {{ info }}
               </li>
             </ul>
           </div>
@@ -40,8 +41,33 @@
             hide-details
           ></v-select>
           <div v-if="selectedMachine === 'Feintool XFT2500speed'">
+            <br />
             <iframe
-              src="@assets/XFT2500speed.pdf"
+              src="./XFT2500speed.pdf"
+              style="width: 100%; height: 600px"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div v-if="selectedMachine === 'SecMatic-Kupplung Typ 587.xx'">
+            <br />
+            <iframe
+              src="./BetAn_SecMatic-Kupplung.pdf"
+              style="width: 100%; height: 600px"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div v-if="selectedMachine === 'HFA8800PLUS'">
+            <br />
+            <iframe
+              src="./BetAn_HFA8800PLUS.pdf"
+              style="width: 100%; height: 600px"
+              frameborder="0"
+            ></iframe>
+          </div>
+          <div v-if="selectedMachine === 'Ladedruckregelung'">
+            <br />
+            <iframe
+              src="./Anleitung_Ladedruckregelung.pdf"
               style="width: 100%; height: 600px"
               frameborder="0"
             ></iframe>
@@ -55,18 +81,34 @@
 
 
 <script>
+import axios from "axios";
+
 export default {
   name: "UC3",
 
   data: () => ({
     selectedMachine: null,
     request: null,
-    maschines: ["Feintool XFT2500speed"],
-    products: [
-      "Eine zulockere Trocknerkette",
-      "Kette wieder drauf gefädelt und gespannt ",
-      "Lüfter von Trockner macht sehr starke Geräusche",
+    infos: null,
+    maschines: [
+      "Feintool XFT2500speed",
+      "HFA8800PLUS",
+      "SecMatic-Kupplung Typ 587.xx",
+      "Ladedruckregelung",
     ],
   }),
+
+  mounted() {},
+  methods: {
+    async fetchRecommendations() {
+      let response = await axios.post(
+        "http://localhost:8080/get-recommendations",
+        {
+          data: this.request,
+        }
+      );
+      this.infos = response.data.recommendations;
+    },
+  },
 };
 </script>
